@@ -1,4 +1,6 @@
 Chumon::Application.routes.draw do
+  resources :roles
+
   resources :accounts_roles
 
   resources :accounts
