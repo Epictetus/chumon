@@ -40,6 +40,9 @@ gem 'ruby-debug19', :require => 'ruby-debug'
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-doc'
+  gem 'rspec-rails'
+  gem 'spork-rails'
+
 end
 gem 'haml-rails'
 gem 'coffee-filter'
