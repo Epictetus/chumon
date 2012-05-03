@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Order:
+  = @credit.order_id
+%p
+  %b Credited at:
+  = @credit.credited_at
+
+= link_to 'Edit', edit_credit_path(@credit)
+\|
+= link_to 'Back', credits_path

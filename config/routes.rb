@@ -1,4 +1,6 @@
 Chumon::Application.routes.draw do
+  resources :credits
+
   resources :bills
 
   resources :orders
