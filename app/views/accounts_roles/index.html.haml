@@ -1,0 +1,21 @@
+%h1 Listing accounts_roles
+
+%table
+  %tr
+    %th Account
+    %th Role
+    %th
+    %th
+    %th
+
+  - @accounts_roles.each do |accounts_role|
+    %tr
+      %td= accounts_role.account_id
+      %td= accounts_role.role_id
+      %td= link_to 'Show', accounts_role
+      %td= link_to 'Edit', edit_accounts_role_path(accounts_role)
+      %td= link_to 'Destroy', accounts_role, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Accounts role', new_accounts_role_path

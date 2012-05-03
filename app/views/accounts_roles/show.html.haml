@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Account:
+  = @accounts_role.account_id
+%p
+  %b Role:
+  = @accounts_role.role_id
+
+= link_to 'Edit', edit_accounts_role_path(@accounts_role)
+\|
+= link_to 'Back', accounts_roles_path
