@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @product.name
+%p
+  %b Unit price:
+  = @product.unit_price
+%p
+  %b Serial number:
+  = @product.serial_number
+
+= link_to 'Edit', edit_product_path(@product)
+\|
+= link_to 'Back', products_path
