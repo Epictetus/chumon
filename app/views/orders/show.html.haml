@@ -1,0 +1,42 @@
+%p#notice= notice
+
+%p
+  %b Account:
+  = @order.account_id
+%p
+  %b Order code:
+  = @order.order_code
+%p
+  %b Customer zip code:
+  = @order.customer_zip_code
+%p
+  %b Constmer location:
+  = @order.constmer_location
+%p
+  %b Delivery place:
+  = @order.delivery_place
+%p
+  %b Delivering at:
+  = @order.delivering_at
+%p
+  %b Customer name:
+  = @order.customer_name
+%p
+  %b Company name:
+  = @order.company_name
+%p
+  %b Company location:
+  = @order.company_location
+%p
+  %b Company zip code:
+  = @order.company_zip_code
+%p
+  %b Company phone:
+  = @order.company_phone
+%p
+  %b Company fax:
+  = @order.company_fax
+
+= link_to 'Edit', edit_order_path(@order)
+\|
+= link_to 'Back', orders_path

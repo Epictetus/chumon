@@ -1,4 +1,6 @@
 Chumon::Application.routes.draw do
+  resources :orders
+
   resources :order_details
 
   resources :products
