@@ -1,0 +1,21 @@
+%h1 Listing deliveries
+
+%table
+  %tr
+    %th Order
+    %th Delivered at
+    %th
+    %th
+    %th
+
+  - @deliveries.each do |delivery|
+    %tr
+      %td= delivery.order_id
+      %td= delivery.delivered_at
+      %td= link_to 'Show', delivery
+      %td= link_to 'Edit', edit_delivery_path(delivery)
+      %td= link_to 'Destroy', delivery, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Delivery', new_delivery_path
