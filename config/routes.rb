@@ -1,4 +1,6 @@
 Chumon::Application.routes.draw do
+  resources :order_details
+
   resources :products
 
   # The priority is based upon order of creation:
