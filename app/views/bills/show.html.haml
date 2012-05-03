@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Order:
+  = @bill.order_id
+%p
+  %b Sent at:
+  = @bill.sent_at
+
+= link_to 'Edit', edit_bill_path(@bill)
+\|
+= link_to 'Back', bills_path

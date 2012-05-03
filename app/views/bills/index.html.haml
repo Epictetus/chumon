@@ -1,0 +1,21 @@
+%h1 Listing bills
+
+%table
+  %tr
+    %th Order
+    %th Sent at
+    %th
+    %th
+    %th
+
+  - @bills.each do |bill|
+    %tr
+      %td= bill.order_id
+      %td= bill.sent_at
+      %td= link_to 'Show', bill
+      %td= link_to 'Edit', edit_bill_path(bill)
+      %td= link_to 'Destroy', bill, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Bill', new_bill_path
