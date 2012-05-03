@@ -42,6 +42,7 @@ group :development, :test do
   gem 'pry-doc'
   gem 'rspec-rails'
   gem 'spork-rails'
+  gem 'factory_girl_rails'
 
 end
 gem 'haml-rails'
