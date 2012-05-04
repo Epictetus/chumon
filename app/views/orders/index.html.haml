@@ -10,6 +10,8 @@
     %th= Order.human_attribute_name(:delivery_place)
     %th= Order.human_attribute_name(:delivering_at)
     %th= Order.human_attribute_name(:ordered_at)
+    %th= Order.human_attribute_name(:created_at)
+    %th= Order.human_attribute_name(:updated_at)
     %th
     %th
     %th
@@ -19,7 +21,9 @@
       %td= order.order_code
       %td= order.delivery_place
       %td= order.delivering_at
-      %td= order.ordered_at
+      %td= l(order.ordered_at, format: :date_only) if order.ordered_at
+      %td= l(order.created_at, format: :date_only) if order.created_at
+      %td= l(order.updated_at, format: :date_only) if order.updated_at
       %td= link_to 'Show', order
       %td= link_to 'Edit', edit_order_path(order)
       %td= link_to 'Destroy', order, :confirm => 'Are you sure?', :method => :delete

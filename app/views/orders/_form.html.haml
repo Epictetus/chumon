@@ -59,7 +59,6 @@
         %th= OrderDetail.human_attribute_name(:quantity)
         %th= OrderDetail.human_attribute_name(:product_unit)
         %th= OrderDetail.human_attribute_name(:subtotal)
-
     %tbody{id:'order_details'}
       = f.fields_for :order_details do |order_detail_field|
         - order_detail = order_detail_field.object
@@ -85,6 +84,12 @@
 
   %span{id:'add_button'}
     [+]
+
+  %hr
+
+  .actions
+    %input{type:'button', value:'保存', onclick:'submit()'}
+
 
 :javascript
   products = function () {
