@@ -1,10 +1,12 @@
 %p#notice= notice
 
 %p
-  %b Order:
+  %b= @credit.class.human_attribute_name(:order)
+  \:
   = @credit.order_id
 %p
-  %b Credited at:
+  %b= @credit.class.human_attribute_name(:credited_at)
+  \:
   = @credit.credited_at
 
 = link_to 'Edit', edit_credit_path(@credit)

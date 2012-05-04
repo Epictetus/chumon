@@ -1,10 +1,12 @@
 %p#notice= notice
 
 %p
-  %b Order:
+  %b= @delivery.class.human_attribute_name(:order)
+  \:
   = @delivery.order_id
 %p
-  %b Delivered at:
+  %b= @delivery.class.human_attribute_name(:delivered_at)
+  \:
   = @delivery.delivered_at
 
 = link_to 'Edit', edit_delivery_path(@delivery)

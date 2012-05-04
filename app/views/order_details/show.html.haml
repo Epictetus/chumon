@@ -1,16 +1,20 @@
 %p#notice= notice
 
 %p
-  %b Product:
+  %b= @order_detail.class.human_attribute_name(:product)
+  \:
   = @order_detail.product_id
 %p
-  %b Order:
+  %b= @order_detail.class.human_attribute_name(:order)
+  \:
   = @order_detail.order_id
 %p
-  %b Unit price:
+  %b= @order_detail.class.human_attribute_name(:unit_price)
+  \:
   = @order_detail.unit_price
 %p
-  %b Quantity:
+  %b= @order_detail.class.human_attribute_name(:quantity)
+  \:
   = @order_detail.quantity
 
 = link_to 'Edit', edit_order_detail_path(@order_detail)

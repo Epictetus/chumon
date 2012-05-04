@@ -1,10 +1,12 @@
 %p#notice= notice
 
 %p
-  %b Login:
+  %b= @account.class.human_attribute_name(:login)
+  \:
   = @account.login
 %p
-  %b Password:
+  %b= @account.class.human_attribute_name(:password)
+  \:
   = @account.password
 
 = link_to 'Edit', edit_account_path(@account)

@@ -2,10 +2,10 @@
 
 %table
   %tr
-    %th Name
-    %th Unit
-    %th Type number
-    %th Unit price
+    %th= Product.human_attribute_name(:name)
+    %th= Product.human_attribute_name(:unit)
+    %th= Product.human_attribute_name(:type_number)
+    %th= Product.human_attribute_name(:unit_price)
     %th
     %th
     %th

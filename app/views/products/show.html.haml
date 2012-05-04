@@ -1,16 +1,20 @@
 %p#notice= notice
 
 %p
-  %b Name:
+  %b= @product.class.human_attribute_name(:name)
+  \:
   = @product.name
 %p
-  %b Unit:
+  %b= @product.class.human_attribute_name(:unit)
+  \:
   = @product.unit
 %p
-  %b Type number:
+  %b= @product.class.human_attribute_name(:type_number)
+  \:
   = @product.type_number
 %p
-  %b Unit price:
+  %b= @product.class.human_attribute_name(:unit_price)
+  \:
   = @product.unit_price
 
 = link_to 'Edit', edit_product_path(@product)

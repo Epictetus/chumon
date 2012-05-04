@@ -1,40 +1,52 @@
 %p#notice= notice
 
 %p
-  %b Account:
+  %b= @order.class.human_attribute_name(:account)
+  \:
   = @order.account_id
 %p
-  %b Order code:
+  %b= @order.class.human_attribute_name(:order_code)
+  \:
   = @order.order_code
 %p
-  %b Customer zip code:
+  %b= @order.class.human_attribute_name(:customer_zip_code)
+  \:
   = @order.customer_zip_code
 %p
-  %b Constmer location:
+  %b= @order.class.human_attribute_name(:constmer_location)
+  \:
   = @order.constmer_location
 %p
-  %b Delivery place:
+  %b= @order.class.human_attribute_name(:delivery_place)
+  \:
   = @order.delivery_place
 %p
-  %b Delivering at:
+  %b= @order.class.human_attribute_name(:delivering_at)
+  \:
   = @order.delivering_at
 %p
-  %b Customer name:
+  %b= @order.class.human_attribute_name(:customer_name)
+  \:
   = @order.customer_name
 %p
-  %b Company name:
+  %b= @order.class.human_attribute_name(:company_name)
+  \:
   = @order.company_name
 %p
-  %b Company location:
+  %b= @order.class.human_attribute_name(:company_location)
+  \:
   = @order.company_location
 %p
-  %b Company zip code:
+  %b= @order.class.human_attribute_name(:company_zip_code)
+  \:
   = @order.company_zip_code
 %p
-  %b Company phone:
+  %b= @order.class.human_attribute_name(:company_phone)
+  \:
   = @order.company_phone
 %p
-  %b Company fax:
+  %b= @order.class.human_attribute_name(:company_fax)
+  \:
   = @order.company_fax
 
 = link_to 'Edit', edit_order_path(@order)

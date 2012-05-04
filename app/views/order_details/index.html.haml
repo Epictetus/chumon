@@ -2,10 +2,10 @@
 
 %table
   %tr
-    %th Product
-    %th Order
-    %th Unit price
-    %th Quantity
+    %th= OrderDetail.human_attribute_name(:product)
+    %th= OrderDetail.human_attribute_name(:order)
+    %th= OrderDetail.human_attribute_name(:unit_price)
+    %th= OrderDetail.human_attribute_name(:quantity)
     %th
     %th
     %th

@@ -2,18 +2,18 @@
 
 %table
   %tr
-    %th Account
-    %th Order code
-    %th Customer zip code
-    %th Constmer location
-    %th Delivery place
-    %th Delivering at
-    %th Customer name
-    %th Company name
-    %th Company location
-    %th Company zip code
-    %th Company phone
-    %th Company fax
+    %th= Order.human_attribute_name(:account)
+    %th= Order.human_attribute_name(:order_code)
+    %th= Order.human_attribute_name(:customer_zip_code)
+    %th= Order.human_attribute_name(:constmer_location)
+    %th= Order.human_attribute_name(:delivery_place)
+    %th= Order.human_attribute_name(:delivering_at)
+    %th= Order.human_attribute_name(:customer_name)
+    %th= Order.human_attribute_name(:company_name)
+    %th= Order.human_attribute_name(:company_location)
+    %th= Order.human_attribute_name(:company_zip_code)
+    %th= Order.human_attribute_name(:company_phone)
+    %th= Order.human_attribute_name(:company_fax)
     %th
     %th
     %th

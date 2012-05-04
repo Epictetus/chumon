@@ -1,7 +1,8 @@
 %p#notice= notice
 
 %p
-  %b Type:
+  %b= @role.class.human_attribute_name(:type)
+  \:
   = @role.type
 
 = link_to 'Edit', edit_role_path(@role)

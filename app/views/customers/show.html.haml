@@ -1,25 +1,32 @@
 %p#notice= notice
 
 %p
-  %b Account:
+  %b= @customer.class.human_attribute_name(:account)
+  \:
   = @customer.account_id
 %p
-  %b Customer name:
+  %b= @customer.class.human_attribute_name(:customer_name)
+  \:
   = @customer.customer_name
 %p
-  %b Company name:
+  %b= @customer.class.human_attribute_name(:company_name)
+  \:
   = @customer.company_name
 %p
-  %b Location:
+  %b= @customer.class.human_attribute_name(:location)
+  \:
   = @customer.location
 %p
-  %b Zip code:
+  %b= @customer.class.human_attribute_name(:zip_code)
+  \:
   = @customer.zip_code
 %p
-  %b Phone:
+  %b= @customer.class.human_attribute_name(:phone)
+  \:
   = @customer.phone
 %p
-  %b Fax:
+  %b= @customer.class.human_attribute_name(:fax)
+  \:
   = @customer.fax
 
 = link_to 'Edit', edit_customer_path(@customer)

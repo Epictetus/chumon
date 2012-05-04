@@ -2,13 +2,13 @@
 
 %table
   %tr
-    %th Account
-    %th Customer name
-    %th Company name
-    %th Location
-    %th Zip code
-    %th Phone
-    %th Fax
+    %th= Customer.human_attribute_name(:account)
+    %th= Customer.human_attribute_name(:customer_name)
+    %th= Customer.human_attribute_name(:company_name)
+    %th= Customer.human_attribute_name(:location)
+    %th= Customer.human_attribute_name(:zip_code)
+    %th= Customer.human_attribute_name(:phone)
+    %th= Customer.human_attribute_name(:fax)
     %th
     %th
     %th

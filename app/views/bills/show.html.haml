@@ -1,10 +1,12 @@
 %p#notice= notice
 
 %p
-  %b Order:
+  %b= @bill.class.human_attribute_name(:order)
+  \:
   = @bill.order_id
 %p
-  %b Sent at:
+  %b= @bill.class.human_attribute_name(:sent_at)
+  \:
   = @bill.sent_at
 
 = link_to 'Edit', edit_bill_path(@bill)
