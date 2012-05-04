@@ -8,4 +8,10 @@ class Order < ActiveRecord::Base
   has_many :deliveries
 
   accepts_nested_attributes_for :order_details
+
+  def total
+    order_details.inject(0) do |total, order_detail|
+      total += order_detail.subtotal
+    end
+  end
 end

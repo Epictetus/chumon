@@ -15,13 +15,20 @@ $ ->
             f.parents('tr').find('.product_type_number').val(product.type_number)
             f.parents('tr').find('.unit_price').val(product.unit_price)
             f.parents('tr').find('.product_unit').val(product.unit)
-            f.parents('tr').find('.total').val((parseInt(product.unit_price) || 0) * (parseInt(f.parents('tr').find('.quantity').val()) || 0))
+            f.parents('tr').find('.subtotal').val((parseInt(product.unit_price) || 0) * (parseInt(f.parents('tr').find('.quantity').val()) || 0))
+
+  total = () ->
+    n = 0
+    for i in $('.subtotal')
+      n += parseInt($(i).val()) || 0
+    $('.total').val(n)
 
   $('.quantity').live 'change', () ->
     f = $(@)
     f.parents('tr')
-      .find('.total')
+      .find('.subtotal')
       .val((parseInt(f.parents('tr').find('.unit_price').val()) || 0) * (parseInt(f.parents('tr').find('.quantity').val()) || 0))
+    total()
 
   product_text_field = () ->
     $('<input>')
@@ -67,6 +74,6 @@ $ ->
             .addClass('product_unit')))
 
         .append($('<td>').append(product_text_field()
-            .addClass('total'))))
+            .addClass('subtotal'))))
 
     return false
