@@ -1,0 +1,106 @@
+ja:
+  activerecord:
+    models:
+      account: account
+      accounts_role: ロール
+      bill: 請求
+      credit: 入金
+      customer: 顧客
+      delivery: 納品
+      order: オーダ
+      order_detail: オーダ詳細
+      product: 商品
+      role: 役割
+      role/account_manager: 経理
+      role/administrator: 管理者
+      role/delivery_operator: 納品オペレータ
+      role/product_manager: 商品マネージャー
+      role/role_customer: 顧客
+
+    attributes:
+      account:
+        accounts_roles: ロール
+        customer: :activerecord.models.customer
+        login: ログイン
+        orders: 順序
+        password: パスワード
+        roles: 役割
+
+      accounts_role:
+        account: :activerecord.models.account
+        role: :activerecord.models.role
+
+      bill:
+        order: :activerecord.models.order
+        sent_at: 請求書送付日
+
+      credit:
+        credited_at: 入金確認日
+        order: :activerecord.models.order
+
+      customer:
+        company_name: 会社名
+        customer: :activerecord.models.customer
+        customer_name: 顧客名
+        fax: FAX
+        location: 住所
+        phone: 電話番号
+        zip_code: 郵便番号
+
+      delivery:
+        delivered_at: 納品日
+        order: :activerecord.models.order
+
+      order:
+        account: :activerecord.models.account
+        bills: 請求
+        company_fax: FAX
+        company_location: 住所
+        company_name: 顧客会社名
+        company_phone: 電話番号
+        company_zip_code: 郵便番号
+        constmer_location: 住所
+        credits: 入金
+        customer_name: 顧客代表者氏名
+        customer_zip_code: 顧客の郵便番号
+        deliveries: 納品
+        delivering_at: 納品希望日
+        delivery_place: 納品場所
+        order_code: 注文番号
+        order_details: オーダ詳細
+
+      order_detail:
+        order: :activerecord.models.order
+        product: :activerecord.models.product
+        quantity: 量
+        unit_price: 単価
+
+      role:
+        accounts: アカウント
+        accounts_roles: ロール
+
+      role/account_manager:
+        accounts: アカウント
+        accounts_roles: ロール
+
+      role/administrator:
+        accounts: アカウント
+        accounts_roles: ロール
+
+      role/delivery_operator:
+        accounts: アカウント
+        accounts_roles: ロール
+
+      role/product_manager:
+        accounts: アカウント
+        accounts_roles: ロール
+
+      role/role_customer:
+        accounts: アカウント
+        accounts_roles: ロール
+
+      product:
+        name: 名前
+        type_number: 型番
+        unit: 単位
+        unit_price: 単価

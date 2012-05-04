@@ -47,3 +47,4 @@ group :development, :test do
 end
 gem 'haml-rails'
 gem 'coffee-filter'
+gem 'i18n_generators'

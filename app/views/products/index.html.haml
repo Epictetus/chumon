@@ -3,8 +3,9 @@
 %table
   %tr
     %th Name
+    %th Unit
+    %th Type number
     %th Unit price
-    %th Serial number
     %th
     %th
     %th
@@ -12,8 +13,9 @@
   - @products.each do |product|
     %tr
       %td= product.name
+      %td= product.unit
+      %td= product.type_number
       %td= product.unit_price
-      %td= product.serial_number
       %td= link_to 'Show', product
       %td= link_to 'Edit', edit_product_path(product)
       %td= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete

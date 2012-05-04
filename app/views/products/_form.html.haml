@@ -10,10 +10,13 @@
     = f.label :name
     = f.text_field :name
   .field
+    = f.label :unit
+    = f.text_field :unit
+  .field
+    = f.label :type_number
+    = f.text_field :type_number
+  .field
     = f.label :unit_price
     = f.number_field :unit_price
-  .field
-    = f.label :serial_number
-    = f.text_field :serial_number
   .actions
     = f.submit 'Save'

@@ -3,7 +3,8 @@
 FactoryGirl.define do
   factory :product do
     name "MyString"
+    unit "MyString"
+    type_number "MyString"
     unit_price 1
-    serial_number "MyString"
   end
 end

@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+[
+ Role::RoleCustomer,
+ Role::ProductManager,
+ Role::AccountManager,
+ Role::DeliveryOperator,
+ Role::Administrator,
+].each do |klass|
+  if klass.count.zero?
+    klass.create
+  end
+end
