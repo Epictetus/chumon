@@ -90,3 +90,7 @@ $ ->
             .addClass('subtotal'))))
 
     return false
+
+  $('#submit_order_at').click ->
+    d = new Date()
+    $('input#order_ordered_at').val(d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds())

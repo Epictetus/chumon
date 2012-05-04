@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
 class Order < ActiveRecord::Base
-  attr_accessible :account_id, :company_fax, :company_location, :company_name, :company_phone, :company_zip_code, :customer_name, :delivering_at, :delivery_place, :order_code, :note, :order_details_attributes
+  attr_accessible :account_id, :company_fax, :company_location, :company_name, :company_phone, :company_zip_code, :customer_name, :delivering_at, :delivery_place, :order_code, :note, :order_details_attributes, :ordered_at
 
   has_many :order_details
   belongs_to :account
@@ -47,5 +48,13 @@ class Order < ActiveRecord::Base
     self.new(args)
   end
 
+  def ordered?
+    !!self.ordered_at
+  end
 
+  def status
+    if ordered?
+      '注文済'
+    end
+  end
 end

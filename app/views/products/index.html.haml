@@ -1,11 +1,16 @@
 %h1 Listing products
 
+.actions
+  = link_to 'New Product', new_product_path
+
+%hr
+
 %table
   %tr
     %th= Product.human_attribute_name(:name)
-    %th= Product.human_attribute_name(:unit)
     %th= Product.human_attribute_name(:type_number)
     %th= Product.human_attribute_name(:unit_price)
+    %th= Product.human_attribute_name(:unit)
     %th
     %th
     %th
@@ -13,13 +18,11 @@
   - @products.each do |product|
     %tr
       %td= product.name
-      %td= product.unit
       %td= product.type_number
       %td= product.unit_price
+      %td= product.unit
       %td= link_to 'Show', product
       %td= link_to 'Edit', edit_product_path(product)
       %td= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete
 
 %br
-
-= link_to 'New Product', new_product_path

@@ -5,9 +5,15 @@
   \:
   = @order.order_code
 
-= link_to 'Edit', edit_order_path(@order)
-\|
-= link_to 'Back', orders_path
+.actions
+  = form_for @order do |f|
+    = f.hidden_field :ordered_at
+    = f.submit '注文確定', id:'submit_order_at', disabled:@order.ordered?
+
+.actions
+  = link_to 'Edit', edit_order_path(@order)
+  \|
+  = link_to 'Back', orders_path
 
 %hr
 
@@ -78,3 +84,10 @@
         %td
         %td
         %td= @order.total
+
+%hr
+
+.actions
+  = link_to 'Edit', edit_order_path(@order)
+  \|
+  = link_to 'Back', orders_path
