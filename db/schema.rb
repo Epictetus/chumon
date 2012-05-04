@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120504100332) do
+ActiveRecord::Schema.define(:version => 20120504182619) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20120504100332) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.text     "note"
+    t.datetime "ordered_at"
   end
 
   create_table "products", :force => true do |t|

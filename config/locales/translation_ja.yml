@@ -67,6 +67,7 @@ ja:
         delivery_place: 納品場所
         order_code: 注文番号
         order_details: オーダ詳細
+        ordered_at: 注文日
 
       order_detail:
         order: :activerecord.models.order

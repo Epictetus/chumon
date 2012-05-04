@@ -1,37 +1,25 @@
 %h1 Listing orders
 
+= link_to 'New Order', new_order_path
+
+%hr
+
 %table
   %tr
-    %th= Order.human_attribute_name(:account)
     %th= Order.human_attribute_name(:order_code)
     %th= Order.human_attribute_name(:delivery_place)
     %th= Order.human_attribute_name(:delivering_at)
-    %th= Order.human_attribute_name(:customer_name)
-    %th= Order.human_attribute_name(:company_name)
-    %th= Order.human_attribute_name(:company_location)
-    %th= Order.human_attribute_name(:company_zip_code)
-    %th= Order.human_attribute_name(:company_phone)
-    %th= Order.human_attribute_name(:company_fax)
+    %th= Order.human_attribute_name(:ordered_at)
     %th
     %th
     %th
 
   - @orders.each do |order|
     %tr
-      %td= order.account_id
       %td= order.order_code
       %td= order.delivery_place
       %td= order.delivering_at
-      %td= order.customer_name
-      %td= order.company_name
-      %td= order.company_location
-      %td= order.company_zip_code
-      %td= order.company_phone
-      %td= order.company_fax
+      %td= order.ordered_at
       %td= link_to 'Show', order
       %td= link_to 'Edit', edit_order_path(order)
       %td= link_to 'Destroy', order, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Order', new_order_path

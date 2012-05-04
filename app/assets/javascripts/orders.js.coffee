@@ -4,6 +4,12 @@
 
 $ ->
 
+  total = () ->
+    n = 0
+    for i in $('.subtotal')
+      n += parseInt($(i).val()) || 0
+    $('.total').val(n)
+
   $('select.product_id').live 'change', () ->
     f = $(@)
     if f.val()
@@ -12,16 +18,20 @@ $ ->
           type:'GET'
           success: (data, textStatus, jqXHR) ->
             product = data
+            f.parents('tr').find('.product_name').val(product.name)
             f.parents('tr').find('.product_type_number').val(product.type_number)
             f.parents('tr').find('.unit_price').val(product.unit_price)
+            f.parents('tr').find('.quantity').val('')
             f.parents('tr').find('.product_unit').val(product.unit)
             f.parents('tr').find('.subtotal').val((parseInt(product.unit_price) || 0) * (parseInt(f.parents('tr').find('.quantity').val()) || 0))
-
-  total = () ->
-    n = 0
-    for i in $('.subtotal')
-      n += parseInt($(i).val()) || 0
-    $('.total').val(n)
+    else
+      f.parents('tr').find('.product_name').val('')
+      f.parents('tr').find('.product_type_number').val('')
+      f.parents('tr').find('.unit_price').val('')
+      f.parents('tr').find('.quantity').val('')
+      f.parents('tr').find('.product_unit').val('')
+      f.parents('tr').find('.subtotal').val('')
+    total()
 
   $('.quantity').live 'change', () ->
     f = $(@)
@@ -42,13 +52,16 @@ $ ->
       .attr('name', 'order[order_details_attributes][' + n + '][product_id]')
       .addClass('product_id')
 
-
     for product in [{}].concat(products())
       product_select.append($('<option>').attr('value', product.id).text(product.name))
 
     $('#order_details')
       .append($('<tr>')
-        .append($('<td>').append(product_select))
+        .append($('<td>')
+          .append($('<input>').attr('type', 'hidden')
+            .attr('id', 'order_order_details_attributes_' + n + '_product_name'))
+            .attr('name', 'order[order_details_attributes][' + n + '][product_name]')
+          .append(product_select))
 
         .append($('<td>').append(product_text_field()
             .attr('id', 'order_order_details_attributes_' + n + '_product_type_number')
