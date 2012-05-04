@@ -1,5 +1,10 @@
 %h1 Listing orders
 
+.actions
+  = form_tag :orders, method: :get do
+    = text_field_tag :q, params[:q]
+    = submit_tag '検索'
+
 = link_to 'New Order', new_order_path
 
 %hr

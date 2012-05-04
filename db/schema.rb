@@ -75,7 +75,6 @@ ActiveRecord::Schema.define(:version => 20120504182619) do
   create_table "orders", :force => true do |t|
     t.integer  "account_id"
     t.string   "order_code"
-    t.string   "constmer_location"
     t.string   "delivery_place"
     t.date     "delivering_at"
     t.string   "customer_name"
@@ -84,8 +83,8 @@ ActiveRecord::Schema.define(:version => 20120504182619) do
     t.string   "company_zip_code"
     t.string   "company_phone"
     t.string   "company_fax"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.text     "note"
     t.datetime "ordered_at"
   end

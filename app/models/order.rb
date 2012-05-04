@@ -9,6 +9,16 @@ class Order < ActiveRecord::Base
 
   accepts_nested_attributes_for :order_details
 
+  scope :query, lambda { |q|
+    includes(:order_details)
+      .where(<<-SQL, { q:"%#{q}%"})
+        orders.order_code like :q
+        or orders.delivery_place like :q
+        or order_details.product_name like :q
+        or order_details.product_type_number like :q
+      SQL
+  }
+
   def total
     order_details.inject(0) do |total, order_detail|
       total += order_detail.subtotal

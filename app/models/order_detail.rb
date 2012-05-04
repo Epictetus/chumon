@@ -5,6 +5,6 @@ class OrderDetail < ActiveRecord::Base
   belongs_to :order
 
   def subtotal
-    product.unit_price.to_i * quantity.to_i
+    product.try(:unit_price).to_i * quantity.to_i
   end
 end
