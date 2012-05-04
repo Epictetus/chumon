@@ -1,37 +1,44 @@
 %p#notice= notice
 
 %p
-  %b= @order.class.human_attribute_name(:account)
-  \:
-  = @order.account_id
-%p
   %b= @order.class.human_attribute_name(:order_code)
   \:
   = @order.order_code
 %p
-  %b= @order.class.human_attribute_name(:customer_zip_code)
+  %b= @order.class.human_attribute_name(:created_at)
   \:
-  = @order.customer_zip_code
+  = @order.created_at
+
+%hr
+
+= link_to 'Edit', edit_order_path(@order)
+\|
+= link_to 'Back', orders_path
+
 %p
-  %b= @order.class.human_attribute_name(:constmer_location)
+  %b= @order.class.human_attribute_name(:company_name)
   \:
-  = @order.constmer_location
-%p
-  %b= @order.class.human_attribute_name(:delivery_place)
-  \:
-  = @order.delivery_place
-%p
-  %b= @order.class.human_attribute_name(:delivering_at)
-  \:
-  = @order.delivering_at
+  = @order.company_name
 %p
   %b= @order.class.human_attribute_name(:customer_name)
   \:
   = @order.customer_name
 %p
-  %b= @order.class.human_attribute_name(:company_name)
+  %b= @order.class.human_attribute_name(:company_phone)
   \:
-  = @order.company_name
+  = @order.company_phone
+%p
+  %b= @order.class.human_attribute_name(:company_fax)
+  \:
+  = @order.company_fax
+%p
+  %b= @order.class.human_attribute_name(:delivering_at)
+  \:
+  = @order.delivering_at
+%p
+  %b= @order.class.human_attribute_name(:delivery_place)
+  \:
+  = @order.delivery_place
 %p
   %b= @order.class.human_attribute_name(:company_location)
   \:
@@ -41,14 +48,8 @@
   \:
   = @order.company_zip_code
 %p
-  %b= @order.class.human_attribute_name(:company_phone)
+  %b= @order.class.human_attribute_name(:note)
   \:
-  = @order.company_phone
-%p
-  %b= @order.class.human_attribute_name(:company_fax)
-  \:
-  = @order.company_fax
+  = simple_format @order.note
 
-= link_to 'Edit', edit_order_path(@order)
-\|
-= link_to 'Back', orders_path
+%hr

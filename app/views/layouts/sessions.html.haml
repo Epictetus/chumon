@@ -6,6 +6,4 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    = current_user.login
-    = link_to 'ログアウト', '/logout', method: :delete
     = yield

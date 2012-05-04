@@ -1,0 +1,10 @@
+%h1 ログイン
+
+= notice
+
+= form_tag '/login' do
+  = label_tag 'login', 'アカウント:'
+  = text_field_tag 'login'
+  = label_tag 'password', 'パスワード:'
+  = password_field_tag 'password'
+  = submit_tag 'ログイン'

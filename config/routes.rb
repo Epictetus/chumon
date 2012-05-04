@@ -19,6 +19,10 @@ Chumon::Application.routes.draw do
 
   resources :order_details
 
+  match '/login' => 'sessions#new', via: :get
+  match '/login' => 'sessions#create', via: :post
+  match '/logout' => 'sessions#destroy', via: :delete
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

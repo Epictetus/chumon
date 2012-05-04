@@ -6,6 +6,10 @@ class Account < ActiveRecord::Base
   has_many :accounts_roles
   has_many :roles, through: :accounts_roles
 
+  def self.authenticate(login, password)
+    where(login:login, password:password).first
+  end
+
   def role_customer?
     roles.where(type:Role::RoleCustomer).any?
   end

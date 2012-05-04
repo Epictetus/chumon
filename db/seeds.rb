@@ -17,3 +17,11 @@
     klass.create
   end
 end
+
+[
+ { login:'chumon', password:'chumon'}
+].each do |attrs|
+  if !Account.authenticate(attrs[:login], attrs[:password])
+    Account.create(login:attrs[:login], password:attrs[:password])
+  end
+end

@@ -4,8 +4,6 @@ FactoryGirl.define do
   factory :order do
     account_id 1
     order_code "MyString"
-    customer_zip_code "MyString"
-    constmer_location "MyString"
     delivery_place "MyString"
     delivering_at "2012-05-04"
     customer_name "MyString"
@@ -14,5 +12,6 @@ FactoryGirl.define do
     company_zip_code "MyString"
     company_phone "MyString"
     company_fax "MyString"
+    note "MyString"
   end
 end

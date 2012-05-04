@@ -4,8 +4,6 @@
   %tr
     %th= Order.human_attribute_name(:account)
     %th= Order.human_attribute_name(:order_code)
-    %th= Order.human_attribute_name(:customer_zip_code)
-    %th= Order.human_attribute_name(:constmer_location)
     %th= Order.human_attribute_name(:delivery_place)
     %th= Order.human_attribute_name(:delivering_at)
     %th= Order.human_attribute_name(:customer_name)
@@ -22,8 +20,6 @@
     %tr
       %td= order.account_id
       %td= order.order_code
-      %td= order.customer_zip_code
-      %td= order.constmer_location
       %td= order.delivery_place
       %td= order.delivering_at
       %td= order.customer_name
