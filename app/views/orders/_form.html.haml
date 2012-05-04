@@ -14,7 +14,7 @@
     = f.text_field :created_at, value:Date.today, disabled:true
 
   .actions
-    = f.submit 'Save'
+    %input{type:'button', value:'保存', onclick:'submit()'}
 
   %hr
 
@@ -47,6 +47,28 @@
     = f.text_area :note
 
   .actions
-    = f.submit 'Save'
+    %input{type:'button', value:'保存', onclick:'submit()'}
 
   %hr
+
+  %table
+    %tr
+      %th= OrderDetail.human_attribute_name(:product)
+      %th= OrderDetail.human_attribute_name(:product_type_number)
+      %th= OrderDetail.human_attribute_name(:unit_price)
+      %th= OrderDetail.human_attribute_name(:quantity)
+      %th= OrderDetail.human_attribute_name(:product_unit)
+      %th= OrderDetail.human_attribute_name(:total)
+
+    - n = 0
+    = f.fields_for :order_details do |order_detail_field|
+      - order_detail = order_detail_field.object
+      - product = order_detail_field.object.product
+      %tr
+        %td= order_detail_field.select :product_id, [[]].concat(Product.all.collect {|product| [product.name, product.id]}), {}, class:'product_id'
+        %td= order_detail_field.text_field :product_type_number, readonly:true, class:'product_type_number'
+        %td= order_detail_field.text_field :unit_price, readonly:true, class:'unit_price'
+        %td= order_detail_field.text_field :quantity, class:'quantity'
+        %td= order_detail_field.text_field :product_unit, readonly:true, class:'product_unit'
+        %td= text_field_tag nil, order_detail.quantity.to_i * product.unit_price.to_i, readonly:true, class:'total'
+      - n += 1
