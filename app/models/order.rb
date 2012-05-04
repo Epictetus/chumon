@@ -24,4 +24,28 @@ class Order < ActiveRecord::Base
       total += order_detail.subtotal
     end
   end
+
+  def self.build_by_current_user(current_user)
+
+    customer = current_user.try(:customer)
+    if customer
+      self.build_with_order_code(customer_name:customer.customer_name,
+                                 company_name:customer.company_name,
+                                 company_location:customer.location,
+                                 company_zip_code:customer.zip_code,
+                                 company_phone:customer.phone,
+                                 company_fax:customer.fax)
+    else
+      self.build_with_order_code
+    end
+  end
+
+  def self.build_with_order_code(args={ })
+    if args[:order_code].to_s.empty?
+      args[:order_code] = DateTime.now.strftime('%y%m%d%H%M%S') + '002'
+    end
+    self.new(args)
+  end
+
+
 end

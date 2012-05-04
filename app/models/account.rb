@@ -1,5 +1,5 @@
 class Account < ActiveRecord::Base
-  attr_accessible :login, :password
+  attr_accessible :login, :password, :customer
 
   has_many :orders
   has_one :customer
