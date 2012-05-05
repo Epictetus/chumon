@@ -1,5 +1,10 @@
-%h1 New account
+%h1 アカウント登録
+
+.breadcrumbs
+  = link_to 'Chumon メニュー', '/top'
+  &raquo;
+  = link_to 'アカウント一覧画面', :accounts
+  &raquo;
+  %span.string アカウント登録
 
 = render 'form'
-
-= link_to 'Back', accounts_path

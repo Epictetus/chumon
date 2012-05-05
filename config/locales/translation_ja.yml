@@ -10,7 +10,7 @@ ja:
       order: オーダ
       order_detail: オーダ詳細
       product: 商品
-      role: 役割
+      role: ロール
       role/account_manager: 経理
       role/administrator: 管理者
       role/delivery_operator: 納品オペレータ
@@ -24,7 +24,7 @@ ja:
         login: ログイン
         orders: 順序
         password: パスワード
-        roles: 役割
+        roles: ロール
 
       accounts_role:
         account: :activerecord.models.account
@@ -70,6 +70,7 @@ ja:
         ordered_at: 注文日
         created_at: 作成日
         updated_at: 更新日
+        status: 状態
 
       order_detail:
         order: :activerecord.models.order
@@ -116,3 +117,10 @@ ja:
     crediting: ご入金待ち
     billing: ご注文完了
     ordering: ご注文未完了
+
+  management_status:
+    delivered: 納品済
+    delivering: 未納品
+    crediting: 未入金
+    billing: 未請求
+    ordering: 未受注

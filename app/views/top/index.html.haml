@@ -3,29 +3,29 @@
 %ul
   - if current_user.customer?
     %li
-      = link_to '新規ご注文画面', :new_order
+      = link_to '新規ご注文', :new_order
       %p こちらの画面からご注文いただけます。
     %li
-      = link_to 'ご注文一覧画面', :orders
+      = link_to 'ご注文一覧', :orders
       %p こちらの画面からご注文の一覧をご確認いただけます。
     %li
-      = link_to 'お客様情報設定画面', current_user.customer
+      = link_to 'お客様情報設定', current_user.customer
       %p こちらの画面からお客様のご利用情報を設定いただけます。
 
-  - elsif current_user.product_manager?
+  - if current_user.product_manager?
     %li
-      = link_to '商品管理画面', :products
+      = link_to '商品管理', :products
 
-  - elsif current_user.account_manager?
+  - if current_user.account_manager?
     %li
-      = link_to '請求書発行画面', :billing_orders
+      = link_to '請求書発行', :billing_orders
     %li
-      = link_to '入金確認画面', :crediting_orders
+      = link_to '入金確認', :crediting_orders
 
-  - elsif current_user.delivery_operator?
+  - if current_user.delivery_operator?
     %li
-      = link_to '納品確認画面', :delivering_orders
+      = link_to '納品確認', :delivering_orders
 
-  - elsif administrator?
+  - if current_user.administrator?
     %li
-      = link_to 'アカウント設定画面', :accounts
+      = link_to 'アカウント設定', :accounts

@@ -1,6 +1,12 @@
-%h1 Listing accounts
+%h1 アカウント一覧
 
-= link_to 'New Account', new_account_path
+.breadcrumbs
+  = link_to 'Chumon メニュー', '/top'
+  &raquo;
+  %span.strong アカウント一覧
+
+.actions
+  = link_to 'アカウント登録', new_account_path
 
 %hr
 

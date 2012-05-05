@@ -1,19 +1,27 @@
+%h1 請求書発行画面
+
 %p#notice= notice
+
+.breadcrumbs
+  = link_to 'Chumon メニュー', '/top'
+  &raquo;
+  = link_to '請求書一覧画面', :billing_orders
+  &raquo;
+  %span.strong 請求書発行画面
 
 %p
   %b= @order.class.human_attribute_name(:order_code)
   \:
   = @order.order_code
+%p
+  %b= @order.class.human_attribute_name(:status)
+  \:
+  %span{class:@order.status}= t("management_status.#{@order.status}")
 
 .actions
   = form_for [@order, (@order.bill || @order.build_bill)] do |f|
     = f.hidden_field :sent_at
     = f.submit '請求書発行および送信', id:'submit_billing', disabled:@order.billed?
-
-.actions
-  = link_to 'Edit', edit_order_path(@order)
-  \|
-  = link_to 'Back', orders_path
 
 %hr
 
@@ -84,10 +92,3 @@
         %td
         %td
         %td= @order.total
-
-%hr
-
-.actions
-  = link_to 'Edit', edit_order_path(@order)
-  \|
-  = link_to 'Back', orders_path

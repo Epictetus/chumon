@@ -1,7 +1,10 @@
-%h1 Editing account
+%h1 アカウント変更
+
+.breadcrumbs
+  = link_to 'Chumon メニュー', '/top'
+  &raquo;
+  = link_to 'アカウント一覧画面', :accounts
+  &raquo;
+  %span.string アカウント変更
 
 = render 'form'
-
-= link_to 'Show', @account
-\|
-= link_to 'Back', accounts_path

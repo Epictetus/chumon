@@ -1,19 +1,27 @@
+%h1 納品確認画面
+
+.breadcrumbs
+  = link_to 'Chumon メニュー', '/top'
+  &raquo;
+  = link_to '納品一覧画面', :delivering_orders
+  &raquo;
+  %span.strong 納品確認画面
+
 %p#notice= notice
 
 %p
   %b= @order.class.human_attribute_name(:order_code)
   \:
   = @order.order_code
+%p
+  %b= @order.class.human_attribute_name(:status)
+  \:
+  %span{class:@order.status}= t("management_status.#{@order.status}")
 
 .actions
   = form_for [@order, (@order.delivery || @order.build_delivery)] do |f|
     = f.hidden_field :delivered_at
     = f.submit '納品完了', id:'submit_deliverying', disabled:@order.delivered?
-
-.actions
-  = link_to 'Edit', edit_order_path(@order)
-  \|
-  = link_to 'Back', orders_path
 
 %hr
 
@@ -87,7 +95,3 @@
 
 %hr
 
-.actions
-  = link_to 'Edit', edit_order_path(@order)
-  \|
-  = link_to 'Back', orders_path

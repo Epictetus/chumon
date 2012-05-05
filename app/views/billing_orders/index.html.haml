@@ -1,12 +1,14 @@
-%h1 Listing received orders
+%h1 請求書一覧画面
+
+.breadcrumbs
+  = link_to 'Chumon メニュー', '/top'
+  &raquo;
+  %span.strong 請求書一覧画面
 
 .actions
   = form_tag :orders, method: :get do
     = text_field_tag :q, params[:q]
     = submit_tag '検索'
-
-.actions
-  = link_to 'New Order', new_order_path
 
 %hr
 
@@ -24,7 +26,8 @@
 
   - @orders.each do |order|
     %tr
-      %td= order.status_for_account_manager
+      %td
+        %span{class:order.status}= t("management_status.#{order.status}")
       %td= order.order_code
       %td= l(order.ordered_at, format: :date_only) if order.ordered_at
       %td= order.delivering_at

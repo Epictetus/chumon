@@ -1,19 +1,28 @@
+%h1 入金確認画面
+
 %p#notice= notice
+
+.breadcrumbs
+  = link_to 'Chumon メニュー', '/top'
+  &raquo;
+  = link_to '入金一覧画面', :crediting_orders
+  &raquo;
+  %span.strong 入金確認画面
 
 %p
   %b= @order.class.human_attribute_name(:order_code)
   \:
   = @order.order_code
+%p
+  %b= @order.class.human_attribute_name(:status)
+  \:
+  %span{class:@order.status}= t("management_status.#{@order.status}")
 
 .actions
   = form_for [@order, (@order.credit || @order.build_credit)] do |f|
     = f.hidden_field :credited_at
     = f.submit '入金完了', id:'submit_crediting', disabled:@order.credited?
 
-.actions
-  = link_to 'Edit', edit_order_path(@order)
-  \|
-  = link_to 'Back', orders_path
 
 %hr
 
@@ -87,7 +96,3 @@
 
 %hr
 
-.actions
-  = link_to 'Edit', edit_order_path(@order)
-  \|
-  = link_to 'Back', orders_path

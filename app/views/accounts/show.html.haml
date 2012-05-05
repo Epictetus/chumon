@@ -1,4 +1,15 @@
+%h1 アカウント詳細画面
+
 %p#notice= notice
+
+.breadcrumbs
+  = link_to 'Chumon メニュー', '/top'
+  &raquo;
+  = link_to 'アカウント一覧画面', :accounts
+  &raquo;
+  %span.strong アカウント詳細画面
+
+= link_to 'Edit', edit_account_path(@account)
 
 = render partial:@account
 
@@ -9,6 +20,3 @@
     - @account.roles.each do |role|
       %li= role.name
 
-= link_to 'Edit', edit_account_path(@account)
-\|
-= link_to 'Back', accounts_path
