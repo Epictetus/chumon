@@ -1,4 +1,5 @@
-- roles = Role.managers
+- roles = Role.all
+- managers = Role.managers
 
 = form_for @account do |f|
   -if @account.errors.any?
@@ -18,8 +19,12 @@
     = f.label :accounts_roles
     #accounts_roles{num:@account.accounts_roles.count}
       = f.fields_for :accounts_roles do |accounts_role_field|
+        - accounts_role = accounts_role_field.object
         .accounts_role_field
-          = accounts_role_field.select :role_id, [[]].concat(roles.collect {|role| [role.name, role.id]})
+          - if accounts_role.customer?
+            = accounts_role_field.select :role_id, [[]].concat(roles.collect {|role| [role.name, role.id]}), {}, disabled:true
+          - else
+            = accounts_role_field.select :role_id, [[]].concat(managers.collect {|role| [role.name, role.id]})
           = accounts_role_field.hidden_field :_destroy, class:'_destroy'
           %br
   .action
@@ -31,5 +36,5 @@
 :javascript
 
   roles = function () {
-    return #{roles.collect { |role| role.attributes }.to_json};
+    return #{managers.collect { |role| role.attributes }.to_json};
   }

@@ -1,9 +1,7 @@
 %p#notice= notice
 
-%p
-  %b= @customer.class.human_attribute_name(:account)
-  \:
-  = @customer.account_id
+= render @customer.account
+
 %p
   %b= @customer.class.human_attribute_name(:customer_name)
   \:

@@ -1,13 +1,6 @@
 %p#notice= notice
 
-%p
-  %b= @account.class.human_attribute_name(:login)
-  \:
-  = @account.login
-%p
-  %b= @account.class.human_attribute_name(:password)
-  \:
-  = @account.password
+= render partial:@account
 
 %p
   %b= @account.class.human_attribute_name(:roles)

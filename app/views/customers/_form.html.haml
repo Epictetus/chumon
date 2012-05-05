@@ -6,9 +6,18 @@
         - @customer.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :account_id
-    = f.number_field :account_id
+  - account = @customer.account || @customer.build_account
+  = f.fields_for :account, account do |account_field|
+    .field
+      = account_field.label :login
+      = account_field.text_field :login
+      - accounts_roles = account.accounts_roles.empty? ? account.accounts_roles.new(role_id:Role::RoleCustomer.first.id) : account.accounts_roles
+      = account_field.fields_for :accounts_roles do |account_role_field|
+        = account_role_field.hidden_field :role_id
+    .field
+      = account_field.label :password
+      = account_field.text_field :password
+
   .field
     = f.label :customer_name
     = f.text_field :customer_name

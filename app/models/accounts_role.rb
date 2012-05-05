@@ -3,4 +3,9 @@ class AccountsRole < ActiveRecord::Base
 
   belongs_to :account
   belongs_to :role
+
+  def customer?
+    self.role.try(:customer?)
+  end
+
 end
