@@ -9,6 +9,13 @@
   \:
   = @account.password
 
+%p
+  %b= @account.class.human_attribute_name(:roles)
+  \:
+  %ul
+    - @account.roles.each do |role|
+      %li= role.name
+
 = link_to 'Edit', edit_account_path(@account)
 \|
 = link_to 'Back', accounts_path

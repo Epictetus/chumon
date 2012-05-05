@@ -1,3 +1,5 @@
+- roles = Role.all
+
 = form_for @account do |f|
   -if @account.errors.any?
     #error_explanation
@@ -12,5 +14,22 @@
   .field
     = f.label :password
     = f.text_field :password
+  .field
+    = f.label :accounts_roles
+    #accounts_roles{num:@account.accounts_roles.count}
+      = f.fields_for :accounts_roles do |accounts_role_field|
+        .accounts_role_field
+          = accounts_role_field.select :role_id, [[]].concat(roles.collect {|role| [role.name, role.id]})
+          = accounts_role_field.hidden_field :_destroy, class:'_destroy'
+          %br
+  .action
+    %span#add_role
+      [+]
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', id:'account_submit'
+
+:javascript
+
+  roles = function () {
+    return #{roles.collect { |role| role.attributes }.to_json};
+  }

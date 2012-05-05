@@ -44,7 +44,7 @@ $ ->
     $('<input>')
       .attr('type', 'text')
 
-  $('#add_button').click ->
+  $('#add_order').click ->
     n = $('#order_details').select('tbody').find('tr').size()
 
     product_select = $('<select>')

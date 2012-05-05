@@ -82,7 +82,7 @@
         %td
         %td= text_field_tag nil, @order.total, class:'total', size:nil
 
-  %span{id:'add_button'}
+  %span{id:'add_order'}
     [+]
 
   %hr
@@ -93,5 +93,5 @@
 
 :javascript
   products = function () {
-    return #{products.collect{|p| p.attributes}.to_json};
+    return #{products.collect { |product| product.attributes }.to_json};
   }

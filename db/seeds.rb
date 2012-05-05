@@ -17,13 +17,13 @@
 } if Product.count.zero?
 
 [
- Role::RoleCustomer,
- Role::ProductManager,
- Role::AccountManager,
- Role::DeliveryOperator,
- Role::Administrator,
-].each { |klass|
-  klass.create if klass.count.zero?
+ { type:Role::RoleCustomer, name:'顧客'},
+ { type:Role::ProductManager, name:'商品担当'},
+ { type:Role::AccountManager, name:'経理担当'},
+ { type:Role::DeliveryOperator, name:'納品担当'},
+ { type:Role::Administrator, name:'システム担当'},
+].each { |attrs|
+  attrs[:type].create(name:attrs[:name]) if attrs[:type].count.zero?
 }
 
 [

@@ -1,10 +1,12 @@
 class Account < ActiveRecord::Base
-  attr_accessible :login, :password, :customer
+  attr_accessible :login, :password, :customer, :accounts_roles_attributes
 
   has_many :orders
   has_one :customer
   has_many :accounts_roles
   has_many :roles, through: :accounts_roles
+
+  accepts_nested_attributes_for :accounts_roles, allow_destroy:true
 
   def self.authenticate(login, password)
     where(login:login, password:password).first

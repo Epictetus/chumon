@@ -1,5 +1,9 @@
 %h1 Listing accounts
 
+= link_to 'New Account', new_account_path
+
+%hr
+
 %table
   %tr
     %th= Account.human_attribute_name(:login)
@@ -16,6 +20,3 @@
       %td= link_to 'Edit', edit_account_path(account)
       %td= link_to 'Destroy', account, :confirm => 'Are you sure?', :method => :delete
 
-%br
-
-= link_to 'New Account', new_account_path
