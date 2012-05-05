@@ -1,0 +1,33 @@
+%h1 Listing credited orders
+
+.actions
+  = form_tag :orders, method: :get do
+    = text_field_tag :q, params[:q]
+    = submit_tag '検索'
+
+.actions
+  = link_to 'New Order', new_order_path
+
+%hr
+
+%table
+  %tr
+    %th= Order.human_attribute_name(:status)
+    %th= Order.human_attribute_name(:order_code)
+    %th= Order.human_attribute_name(:ordered_at)
+    %th= Order.human_attribute_name(:delivering_at)
+    %th= Order.human_attribute_name(:created_at)
+    %th= Order.human_attribute_name(:updated_at)
+    %th
+    %th
+    %th
+
+  - @orders.each do |order|
+    %tr
+      %td= order.status_for_account_manager
+      %td= order.order_code
+      %td= l(order.ordered_at, format: :date_only) if order.ordered_at
+      %td= order.delivering_at
+      %td= l(order.created_at, format: :date_only) if order.created_at
+      %td= l(order.updated_at, format: :date_only) if order.updated_at
+      %td= link_to 'Show', credited_order_path(order)

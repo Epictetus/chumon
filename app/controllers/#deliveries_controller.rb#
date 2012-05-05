@@ -41,7 +41,7 @@ class DeliveriesController < ApplicationController
   # POST /deliveries.json
   def create
     @order = Order.find(params[:order_id])
-    @delivery = @order.build_delivery(params[:delivery])
+    @delivery = @order.build_dlivery(params[:delivery])
 
     respond_to do |format|
       if @delivery.save

@@ -62,8 +62,10 @@ class Order < ActiveRecord::Base
   end
 
   def status
-    if credited?
-      '発送中'
+    if delivered?
+      '納品済'
+    elsif credited?
+      '納品中'
     elsif billed?
       'ご入金待ち'
     elsif ordered?
@@ -72,7 +74,9 @@ class Order < ActiveRecord::Base
   end
 
   def status_for_account_manager
-    if credited?
+    if delivered?
+      '納品済'
+    elsif credited?
       '未発送'
     elsif billed?
       '未入金'
@@ -99,6 +103,10 @@ class Order < ActiveRecord::Base
 
   def credited?
     !!credit.try(:credited_at)
+  end
+
+  def delivered?
+    !!delivery.try(:delivered_at)
   end
 
 end
