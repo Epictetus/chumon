@@ -57,14 +57,20 @@ class Order < ActiveRecord::Base
   end
 
   def status
-    if ordered?
-      '注文済'
+    if billed?
+      'ご入金待ち'
+    elsif ordered?
+      'ご注文完了'
     end
   end
 
   def status_for_account_manager
-    if ordered?
-      '受注'
+    if billed?
+      '請求済'
+    elsif ordered?
+      '未請求'
+    else
+      '-'
     end
   end
 
