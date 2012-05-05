@@ -1,7 +1,12 @@
-%h1 Editing product
+%h1 商品変更画面
+
+.breadcrumbs
+  = link_to 'Chumon メニュー', '/top'
+  &raquo;
+  = link_to '商品管理画面', :products
+  &raquo;
+  = link_to '商品詳細画面', @product
+  &raquo;
+  %span.strong 商品変更画面
 
 = render 'form'
-
-= link_to 'Show', @product
-\|
-= link_to 'Back', products_path

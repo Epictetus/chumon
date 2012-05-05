@@ -6,6 +6,9 @@
         - @customer.errors.full_messages.each do |msg|
           %li= msg
 
+  .actions
+    = f.submit 'Save'
+
   - account = @customer.account || @customer.build_account
   = f.fields_for :account, account do |account_field|
     .field

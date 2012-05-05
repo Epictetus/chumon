@@ -1,7 +1,12 @@
-%h1 Listing products
+%h1 商品管理画面
+
+.breadcrumbs
+  = link_to 'Chumon メニュー', '/top'
+  &raquo;
+  %span.strong 商品管理画面
 
 .actions
-  = link_to 'New Product', new_product_path
+  = link_to '商品登録', new_product_path
 
 %hr
 

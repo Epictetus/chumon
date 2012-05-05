@@ -1,4 +1,15 @@
+%h1 商品詳細画面
+
+.breadcrumbs
+  = link_to 'Chumon メニュー', '/top'
+  &raquo;
+  = link_to '商品管理画面', :products
+  &raquo;
+  %span.strong 商品詳細画面
+
 %p#notice= notice
+
+= link_to '商品変更', edit_product_path(@product)
 
 %p
   %b= @product.class.human_attribute_name(:name)
@@ -16,7 +27,3 @@
   %b= @product.class.human_attribute_name(:unit_price)
   \:
   = @product.unit_price
-
-= link_to 'Edit', edit_product_path(@product)
-\|
-= link_to 'Back', products_path

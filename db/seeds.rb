@@ -28,19 +28,38 @@
 
 [
  {
-   login:'test',
-   password:'test',
+   login:'chumon',
+   password:'chumon',
    customer:Customer.new(customer_name:'テスト商事',
                          company_name:'テスト商事',
                          location:'テスト県テスト市',
                          zip_code:'a92-32cd',
                          phone:'0a8-bcdf-ffef',
-                         fax:'fef-003-298c')
+                         fax:'fef-003-298c'),
+   roles:[Role::RoleCustomer.first]
  },
  {
-   login:'chumon',
-   password:'chumon'
+   login:'product',
+   password:'product',
+   roles:[Role::ProductManager.first]
+ },
+ {
+   login:'account',
+   password:'account',
+   roles:[Role::AccountManager.first]
+ },
+ {
+   login:'deliver',
+   password:'deliver',
+   roles:[Role::DeliveryOperator.first]
+ },
+ {
+   login:'admin',
+   password:'admin',
+   roles:[Role::Administrator.first]
  },
 ].each { |attrs|
-  Account.create(attrs) if !Account.authenticate(attrs[:login], attrs[:password])
+  roles = attrs.delete :roles
+  account = Account.create(attrs) if !Account.authenticate(attrs[:login], attrs[:password])
+  account.roles = roles
 }

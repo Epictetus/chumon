@@ -1,7 +1,10 @@
-%h1 Editing customer
+%h1 お客様情報変更画面
+
+.breadcrumbs
+  = link_to 'Chumon メニュー', '/top'
+  &raquo;
+  = link_to 'お客様情報設定画面', current_user.customer
+  &raquo;
+  %span.string お客様情報変更画面
 
 = render 'form'
-
-= link_to 'Show', @customer
-\|
-= link_to 'Back', customers_path

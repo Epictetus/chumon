@@ -6,6 +6,8 @@
         - @product.errors.full_messages.each do |msg|
           %li= msg
 
+  .actions
+    = f.submit 'Save'
   .field
     = f.label :name
     = f.text_field :name
