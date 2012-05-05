@@ -1,0 +1,2 @@
+module ReceivedOrdersHelper
+end

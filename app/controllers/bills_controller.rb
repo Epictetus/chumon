@@ -37,14 +37,15 @@ class BillsController < ApplicationController
     @bill = Bill.find(params[:id])
   end
 
-  # POST /bills
-  # POST /bills.json
+  # POST /orders/1/bills
+  # POST /orders/1/bills.json
   def create
-    @bill = Bill.new(params[:bill])
+    @order = Order.find(params[:order_id])
+    @bill = @order.build_bill(params[:bill])
 
     respond_to do |format|
       if @bill.save
-        format.html { redirect_to @bill, notice: 'Bill was successfully created.' }
+        format.html { redirect_to received_order_path(@order), notice: 'Bill was successfully created.' }
         format.json { render json: @bill, status: :created, location: @bill }
       else
         format.html { render action: "new" }

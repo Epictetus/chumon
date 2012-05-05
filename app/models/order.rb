@@ -4,11 +4,11 @@ class Order < ActiveRecord::Base
 
   has_many :order_details
   belongs_to :account
-  has_many :bills
-  has_many :credits
-  has_many :deliveries
+  has_one :bill
+  has_one :credit
+  has_one :delivery
 
-  accepts_nested_attributes_for :order_details
+  accepts_nested_attributes_for :order_details, :bill, :credit, :delivery
 
   scope :query, lambda { |q|
     includes(:order_details)
@@ -18,6 +18,10 @@ class Order < ActiveRecord::Base
         or order_details.product_name like :q
         or order_details.product_type_number like :q
       SQL
+  }
+
+  scope :received_orders, lambda {
+    where('ordered_at is not null')
   }
 
   def total
@@ -56,5 +60,25 @@ class Order < ActiveRecord::Base
     if ordered?
       '注文済'
     end
+  end
+
+  def status_for_account_manager
+    if ordered?
+      '受注'
+    end
+  end
+
+  alias :old_bill :bill
+
+  def bill
+    if old_bill
+      old_bill
+    else
+      Bill.new
+    end
+  end
+
+  def billed?
+    !!bill.try(:sent_at)
   end
 end

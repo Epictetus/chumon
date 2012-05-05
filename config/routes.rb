@@ -1,4 +1,6 @@
 Chumon::Application.routes.draw do
+  resources :received_orders
+
   resources :products
 
   resources :roles
@@ -13,9 +15,10 @@ Chumon::Application.routes.draw do
 
   resources :credits
 
-  resources :bills
+  resources :orders do
+    resources :bills
 
-  resources :orders
+  end
 
   resources :order_details
 

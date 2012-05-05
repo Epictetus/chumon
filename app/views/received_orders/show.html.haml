@@ -1,0 +1,93 @@
+%p#notice= notice
+
+%p
+  %b= @order.class.human_attribute_name(:order_code)
+  \:
+  = @order.order_code
+
+.actions
+  = form_for [@order, (@order.bill || @order.build_bill)] do |f|
+    = f.hidden_field :sent_at
+    = f.submit '請求書発行および送信', id:'submit_billing', disabled:@order.billed?
+
+.actions
+  = link_to 'Edit', edit_order_path(@order)
+  \|
+  = link_to 'Back', orders_path
+
+%hr
+
+%p
+  %b= @order.class.human_attribute_name(:company_name)
+  \:
+  = @order.company_name
+%p
+  %b= @order.class.human_attribute_name(:customer_name)
+  \:
+  = @order.customer_name
+%p
+  %b= @order.class.human_attribute_name(:company_phone)
+  \:
+  = @order.company_phone
+%p
+  %b= @order.class.human_attribute_name(:company_fax)
+  \:
+  = @order.company_fax
+%p
+  %b= @order.class.human_attribute_name(:company_zip_code)
+  \:
+  = @order.company_zip_code
+%p
+  %b= @order.class.human_attribute_name(:company_location)
+  \:
+  = @order.company_location
+%p
+  %b= @order.class.human_attribute_name(:delivering_at)
+  \:
+  = @order.delivering_at
+%p
+  %b= @order.class.human_attribute_name(:delivery_place)
+  \:
+  = @order.delivery_place
+%p
+  %b= @order.class.human_attribute_name(:note)
+  \:
+  = simple_format @order.note
+
+%hr
+
+  %table
+    %thead
+      %tr
+        %th= OrderDetail.human_attribute_name(:product_name)
+        %th= OrderDetail.human_attribute_name(:product_type_number)
+        %th= OrderDetail.human_attribute_name(:unit_price)
+        %th= OrderDetail.human_attribute_name(:quantity)
+        %th= OrderDetail.human_attribute_name(:product_unit)
+        %th= OrderDetail.human_attribute_name(:subtotal)
+
+    %tbody{id:'order_details'}
+      - @order.order_details.each do |order_detail|
+        %tr
+          %td= order_detail.product_name
+          %td= order_detail.product_type_number
+          %td= order_detail.unit_price
+          %td= order_detail.quantity
+          %td= order_detail.product_unit
+          %td= order_detail.subtotal
+
+    %tfoot
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td= @order.total
+
+%hr
+
+.actions
+  = link_to 'Edit', edit_order_path(@order)
+  \|
+  = link_to 'Back', orders_path
