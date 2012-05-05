@@ -40,26 +40,24 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def self.build_by_current_user(current_user)
-
-    customer = current_user.try(:customer)
+  def self.new_and_initialize
+    new_one = self.new
+    customer = new_one.try(:account).try(:customer)
     if customer
-      self.build_with_order_code(customer_name:customer.customer_name,
-                                 company_name:customer.company_name,
-                                 company_location:customer.location,
-                                 company_zip_code:customer.zip_code,
-                                 company_phone:customer.phone,
-                                 company_fax:customer.fax)
+      self.new(order_code:build_order_code,
+               customer_name:customer.customer_name,
+               company_name:customer.company_name,
+               company_location:customer.location,
+               company_zip_code:customer.zip_code,
+               company_phone:customer.phone,
+               company_fax:customer.fax)
     else
-      self.build_with_order_code
+      self.new(order_code:build_order_code)
     end
   end
 
-  def self.build_with_order_code(args={ })
-    if args[:order_code].to_s.empty?
-      args[:order_code] = DateTime.now.strftime('%y%m%d%H%M%S') + '002'
-    end
-    self.new(args)
+  def self.build_order_code(args={ })
+    DateTime.now.strftime('%y%m%d%H%M%S') + '002'
   end
 
   def ordered?
@@ -75,6 +73,8 @@ class Order < ActiveRecord::Base
       'ご入金待ち'
     elsif ordered?
       'ご注文完了'
+    else
+      'ご注文未完了'
     end
   end
 
