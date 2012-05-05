@@ -1,4 +1,6 @@
 class CreditingOrdersController < ApplicationController
+  before_filter :login_required
+
   # GET /crediting_orders
   # GET /crediting_orders.json
   def index

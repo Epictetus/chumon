@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_filter :protected_from_others
+  before_filter :protected_from_others, except: [:new, :create]
 
   # GET /customers
   # GET /customers.json

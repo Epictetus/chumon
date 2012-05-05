@@ -1,4 +1,6 @@
 class BillsController < ApplicationController
+  before_filter :login_required
+
   # GET /bills
   # GET /bills.json
   def index

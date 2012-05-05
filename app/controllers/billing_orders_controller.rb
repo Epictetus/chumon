@@ -1,4 +1,6 @@
 class BillingOrdersController < ApplicationController
+  before_filter :login_required
+
   # GET /billing_orders
   # GET /billing_orders.json
   def index

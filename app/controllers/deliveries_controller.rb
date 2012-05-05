@@ -1,4 +1,6 @@
 class DeliveriesController < ApplicationController
+  before_filter :login_required
+
   # GET /deliveries
   # GET /deliveries.json
   def index

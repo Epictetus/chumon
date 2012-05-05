@@ -1,4 +1,6 @@
 class OrderDetailsController < ApplicationController
+  before_filter :login_required
+
   # GET /order_details
   # GET /order_details.json
   def index
