@@ -2,7 +2,7 @@ class DeliveringOrdersController < ApplicationController
   # GET /delivering_orders
   # GET /delivering_orders.json
   def index
-    @orders = Order.all
+    @orders = Order.delivering_orders
 
     respond_to do |format|
       format.html # index.html.erb

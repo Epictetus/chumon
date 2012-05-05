@@ -29,6 +29,11 @@ class Order < ActiveRecord::Base
       .where('bills.sent_at is not null')
   }
 
+  scope :delivering_orders, lambda {
+    includes(:credit)
+      .where('credits.credited_at is not null')
+  }
+
   def total
     order_details.inject(0) do |total, order_detail|
       total += order_detail.subtotal
@@ -77,7 +82,7 @@ class Order < ActiveRecord::Base
     if delivered?
       '納品済'
     elsif credited?
-      '未発送'
+      '未納品'
     elsif billed?
       '未入金'
     elsif ordered?
