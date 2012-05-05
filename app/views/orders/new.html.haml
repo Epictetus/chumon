@@ -1,4 +1,11 @@
-%h1 New order
+%h1 新規ご注文画面
+
+.breadcrumbs
+  = link_to 'Chumon メニュー', '/top'
+  &raquo;
+  = link_to 'ご注文一覧画面', :orders
+  &raquo;
+  %span.string 新規ご注文画面
 
 = link_to 'Back', orders_path
 

@@ -6,9 +6,9 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    = current_user.login
-    \|
-    = link_to 'アカウント設定', current_user.customer
-    \|
-    = link_to 'ログアウト', '/logout', method: :delete
+    %h1 Chumon
+    .current_user
+      = current_user.login
+    .logout
+      = link_to 'ログアウト', '/logout', method: :delete
     = yield

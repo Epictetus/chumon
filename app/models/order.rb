@@ -66,15 +66,15 @@ class Order < ActiveRecord::Base
 
   def status
     if delivered?
-      '納品済'
+      :delivered
     elsif credited?
-      '納品中'
+      :delivering
     elsif billed?
-      'ご入金待ち'
+      :crediting
     elsif ordered?
-      'ご注文完了'
+      :billing
     else
-      'ご注文未完了'
+      :ordering
     end
   end
 

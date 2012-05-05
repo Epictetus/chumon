@@ -12,7 +12,7 @@ class Account < ActiveRecord::Base
     where(login:login, password:password).first
   end
 
-  def role_customer?
+  def customer?
     roles.where(type:Role::RoleCustomer).any?
   end
 

@@ -1,19 +1,31 @@
+%h1 ご注文詳細画面
+
 %p#notice= notice
+
+.breadcrumbs
+  = link_to 'Chumon メニュー', '/top'
+  &raquo;
+  = link_to 'ご注文一覧画面', :orders
+  &raquo;
+  %span.string ご注文詳細画面
 
 %p
   %b= @order.class.human_attribute_name(:order_code)
   \:
   = @order.order_code
+%p
+  %b= @order.class.human_attribute_name(:status)
+  \:
+  %span{class:@order.status}= t("order_status.#{@order.status}")
 
 .actions
   = form_for @order do |f|
     = f.hidden_field :ordered_at
-    = f.submit '注文確定', id:'submit_order_at', disabled:@order.ordered?
+    = f.submit 'ご注文内容の確定', id:'submit_order_at', disabled:@order.ordered?
 
 .actions
-  = link_to 'Edit', edit_order_path(@order)
-  \|
-  = link_to 'Back', orders_path
+  - unless @order.ordered?
+    = link_to 'Edit', edit_order_path(@order)
 
 %hr
 

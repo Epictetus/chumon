@@ -1,4 +1,6 @@
 Chumon::Application.routes.draw do
+  match '/top' => 'top#index', via: :get
+
   resources :delivering_orders
 
   resources :crediting_orders

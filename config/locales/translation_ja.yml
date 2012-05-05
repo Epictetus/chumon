@@ -109,3 +109,10 @@ ja:
         type_number: 型番
         unit: 単位
         unit_price: 単価
+
+  order_status:
+    delivered: 納品済
+    delivering: 納品中
+    crediting: ご入金待ち
+    billing: ご注文完了
+    ordering: ご注文未完了
