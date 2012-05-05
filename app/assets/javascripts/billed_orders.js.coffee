@@ -5,4 +5,4 @@
 $ ->
   $('#submit_crediting').click ->
     d = new Date()
-    $('input#credit_credited_at').val(d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds())
+    $('input#credit_sent_at').val(d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds())

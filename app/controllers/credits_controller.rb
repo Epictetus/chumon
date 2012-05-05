@@ -40,11 +40,12 @@ class CreditsController < ApplicationController
   # POST /credits
   # POST /credits.json
   def create
-    @credit = Credit.new(params[:credit])
+    @order = Order.find(params[:order_id])
+    @credit = @order.build_credit(params[:credit])
 
     respond_to do |format|
       if @credit.save
-        format.html { redirect_to @credit, notice: 'Credit was successfully created.' }
+        format.html { redirect_to billed_order_path(@order), notice: 'Credit was successfully created.' }
         format.json { render json: @credit, status: :created, location: @credit }
       else
         format.html { render action: "new" }

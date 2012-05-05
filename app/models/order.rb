@@ -24,6 +24,11 @@ class Order < ActiveRecord::Base
     where('ordered_at is not null')
   }
 
+  scope :billed_orders, lambda {
+    includes(:bill)
+      .where('bills.sent_at is not null')
+  }
+
   def total
     order_details.inject(0) do |total, order_detail|
       total += order_detail.subtotal
@@ -57,7 +62,9 @@ class Order < ActiveRecord::Base
   end
 
   def status
-    if billed?
+    if credited?
+      '発送中'
+    elsif billed?
       'ご入金待ち'
     elsif ordered?
       'ご注文完了'
@@ -65,8 +72,10 @@ class Order < ActiveRecord::Base
   end
 
   def status_for_account_manager
-    if billed?
-      '請求済'
+    if credited?
+      '未発送'
+    elsif billed?
+      '未入金'
     elsif ordered?
       '未請求'
     else
@@ -87,4 +96,9 @@ class Order < ActiveRecord::Base
   def billed?
     !!bill.try(:sent_at)
   end
+
+  def credited?
+    !!credit.try(:credited_at)
+  end
+
 end

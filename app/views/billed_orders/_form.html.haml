@@ -1,0 +1,10 @@
+= form_for @billed_order do |f|
+  -if @billed_order.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@billed_order.errors.count, "error")} prohibited this billed_order from being saved:"
+      %ul
+        - @billed_order.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'
