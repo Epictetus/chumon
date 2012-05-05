@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_filter :login_required
-  before_filter :protected_from_others
+  before_filter :protected_from_others, except: :show
 
   # GET /products
   # GET /products.json
