@@ -5,7 +5,13 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+group :production do
+  gem 'pg'
+  gem 'therubyracer-heroku'
+end
+group :development, :test do
+  gem 'sqlite3'
+end
 
 
 # Gems used only for assets and not required
@@ -34,10 +40,10 @@ gem 'jquery-rails'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :development, :test do
+  # To use debugger
+  gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'rspec-rails'
@@ -45,6 +51,7 @@ group :development, :test do
   gem 'factory_girl_rails'
 
 end
+
 gem 'haml-rails'
 gem 'coffee-filter'
 gem 'i18n_generators'
