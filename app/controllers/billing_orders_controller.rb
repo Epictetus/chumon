@@ -1,5 +1,6 @@
 class BillingOrdersController < ApplicationController
   before_filter :login_required
+  before_filter :protected_from_others
 
   # GET /billing_orders
   # GET /billing_orders.json
@@ -23,4 +24,14 @@ class BillingOrdersController < ApplicationController
     end
   end
 
+  private
+
+  def protected_from_others
+    unless current_user.account_manager?
+      respond_to do |format|
+        format.html { redirect_to '/top' }
+        format.json { head :no_content }
+      end
+    end
+  end
 end

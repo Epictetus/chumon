@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  before_filter :login_required, except: [:new, :create]
   before_filter :protected_from_others, except: [:new, :create]
 
   # GET /customers
@@ -86,7 +87,7 @@ class CustomersController < ApplicationController
   private
 
   def protected_from_others
-    unless authorized? and current_user.customer.id == params[:id].to_i
+    unless current_user.customer.id == params[:id].to_i
       respond_to do |format|
         format.html { redirect_to :orders }
         format.json { head :no_content }
