@@ -1,9 +1,9 @@
 Chumon::Application.routes.draw do
-  resources :credited_orders
+  resources :delivering_orders
 
-  resources :billed_orders
+  resources :crediting_orders
 
-  resources :received_orders
+  resources :billing_orders
 
   resources :products
 

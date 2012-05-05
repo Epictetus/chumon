@@ -1,8 +1,8 @@
-class ReceivedOrdersController < ApplicationController
-  # GET /received_orders
-  # GET /received_orders.json
+class DeliveringOrdersController < ApplicationController
+  # GET /delivering_orders
+  # GET /delivering_orders.json
   def index
-    @orders = Order.received_orders
+    @orders = Order.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,8 +10,8 @@ class ReceivedOrdersController < ApplicationController
     end
   end
 
-  # GET /received_orders/1
-  # GET /received_orders/1.json
+  # GET /delivering_orders/1
+  # GET /delivering_orders/1.json
   def show
     @order = Order.find(params[:id])
 

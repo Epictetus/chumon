@@ -1,4 +1,4 @@
-%h1 Listing credited orders
+%h1 Listing billed orders
 
 .actions
   = form_tag :orders, method: :get do
@@ -30,4 +30,4 @@
       %td= order.delivering_at
       %td= l(order.created_at, format: :date_only) if order.created_at
       %td= l(order.updated_at, format: :date_only) if order.updated_at
-      %td= link_to 'Show', credited_order_path(order)
+      %td= link_to 'Show', crediting_order_path(order)

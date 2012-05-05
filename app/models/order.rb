@@ -20,11 +20,11 @@ class Order < ActiveRecord::Base
       SQL
   }
 
-  scope :received_orders, lambda {
+  scope :billing_orders, lambda {
     where('ordered_at is not null')
   }
 
-  scope :billed_orders, lambda {
+  scope :crediting_orders, lambda {
     includes(:bill)
       .where('bills.sent_at is not null')
   }

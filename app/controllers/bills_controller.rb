@@ -45,7 +45,7 @@ class BillsController < ApplicationController
 
     respond_to do |format|
       if @bill.save
-        format.html { redirect_to received_order_path(@order), notice: 'Bill was successfully created.' }
+        format.html { redirect_to billing_order_path(@order), notice: 'Bill was successfully created.' }
         format.json { render json: @bill, status: :created, location: @bill }
       else
         format.html { render action: "new" }
